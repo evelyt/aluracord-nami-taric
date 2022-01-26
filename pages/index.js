@@ -48,7 +48,7 @@ function Title(propos) {
 
 
 export default function HomePage() {
-  const username = 'EvelyT';
+  const username = 'evelyt';
 
   return (
     <>
