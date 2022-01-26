@@ -31,7 +31,7 @@
 </details>
 
 ## :pushpin: Sobre
-Projeto desenvolvido durante a Esse projeto foi desenvolvido durante a <a href="https://www.alura.com.br/imersao-react">Imersão React</a> proposta pela <a href="https://www.alura.com.br/">Alura</a><a>.</a>
+Projeto desenvolvido durante a <a href="https://www.alura.com.br/imersao-react">Imersão React</a> proposta pela <a href="https://www.alura.com.br/">Alura</a><a>.</a>
 
 O mesmo foi inspirado no chat do Discord e desenvolvido com React.js e Next.js.
 
