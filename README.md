@@ -53,7 +53,7 @@ O mesmo foi inspirado no chat do Discord e desenvolvido com React.js e Next.js.
 - [SkynexUI](https://skynexui.dev/)
 
 #### Fontes
-- [Roboto Slab](https://fonts.google.com/specimen/Roboto+Slab)
+- [Roboto](https://fonts.google.com/specimen/Roboto)
 
 <p align="right"><a href="#top"><img src="https://img.shields.io/static/v1?label&message=voltar+ao+topo&color=c9161c&logo" alt="voltar ao topo" /></a></p>
 
