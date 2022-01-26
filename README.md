@@ -26,7 +26,7 @@
         <li><a href="#computer-tecnologias-e-recursos-utilizados">Tecnologias e recursos utilizados</a></li>
             </ul>
         </li>
-        <li><a href="#curly_haired_woman-desenvolvedora">Desenvolvedora</a></li>
+        <li><a href="#woman_technologist-desenvolvedora">Desenvolvedora</a></li>
     </ol>
 </details>
 
@@ -57,7 +57,7 @@ O mesmo foi inspirado no chat do Discord e desenvolvido com React.js e Next.js.
 
 <p align="right"><a href="#top"><img src="https://img.shields.io/static/v1?label&message=voltar+ao+topo&color=c9161c&logo" alt="voltar ao topo" /></a></p>
 
-## :curly_haired_woman: Desenvolvedora
+## :woman_technologist: Desenvolvedora
 
 <img src="https://avatars.githubusercontent.com/u/86385188?v=4" width="150px" alt="foto"/>
 </br>
