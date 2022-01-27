@@ -15,7 +15,7 @@
     <img alt="date created" src="https://badges.pufler.dev/created/evelyt/aluracord-nami-taric?style=plastic&color=F967BC">
     <img src="https://img.shields.io/static/v1?label=🚧 status&message=em+desenvolvimento&color=FDD23F&style=plastic&logo=" alt="status: em desenvolvimento"/>
 </div>
-
+teste
 # <h3>:link:<a href='https://aluracord-nami-taric.vercel.app/'> Acessar a demonstração (Vercel)</a></h3>
 
 <details>
