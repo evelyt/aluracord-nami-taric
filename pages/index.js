@@ -52,11 +52,11 @@ export default function HomePage() {
           {/* Formulário */}
           <Box
             as="form"
-            onSubmit = { function(infosDoEvento){
-                    infosDoEvento.preventDefault();
-                    console.log('subemteu');
-                    roteamento.push('/chat');
-                   // window.location.href = '/chat';
+            onSubmit={function (infosDoEvento) {
+              infosDoEvento.preventDefault();
+              console.log('subemteu');
+              roteamento.push(`/chat?username=${username}`);
+              // window.location.href = '/chat';
             }}
             styleSheet={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
@@ -69,9 +69,11 @@ export default function HomePage() {
             </Text>
 
             <TextField
-              value={username}
+              placeholder="Nome de usuário"
+              //value={username}
               onChange={
                 function (event) {
+                  console.log(event.target.value)
                   const valor = event.target.value;
                   setUsername(valor);
                 }}

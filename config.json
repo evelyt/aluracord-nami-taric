@@ -3,7 +3,7 @@
     "theme": {
         "colors": {
             "primary": {
-				"050": "#800000",
+                "050": "#800000",
                 "100": "#8B0000",
                 "200": "#B22222",
                 "300": "#A52A2A",
@@ -31,6 +31,13 @@
         }
     },
     "stickers": [
+        "https://cdn.discordapp.com/attachments/935178124742762578/936735142272180325/hmmm2.gif",
+        "https://cdn.discordapp.com/attachments/935178124742762578/936735141408169994/be4acc7141c20a18ccdea6e8fe194f02cca871b0_00.gif",
+        "https://cdn.discordapp.com/attachments/935178124742762578/936735141676609586/giphy.gif",
+        "https://cdn.discordapp.com/attachments/935178124742762578/936735142611923044/images_1.jpg",
+        "https://cdn.discordapp.com/attachments/935178124742762578/936735142838407289/images.jpg",
+        "https://cdn.discordapp.com/attachments/935178124742762578/936735191114875010/League-of-Legends--Jhin-Nami-4647247.gif",
+        "https://cdn.discordapp.com/attachments/935178124742762578/936735192196980826/tumblr_mvcqnygxKH1qbabhto1_500.gif",
         "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_1.png",
         "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_2.png",
         "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_3.png",
