@@ -1,30 +1,48 @@
 import { Box, Text, TextField, Image, Button } from '@skynexui/components';
+import { createClient } from '@supabase/supabase-js';
 import React, { useState } from 'react';
 import appConfig from '../config.json';
+
+
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzM5Nzk1MywiZXhwIjoxOTU4OTczOTUzfQ.jbie9zokow3JZdomJYznzvIAk80cbCFKJ-kAslDHZIA';
+const SUPABASE_URL = 'https://blzxyaihxwobqwbqakus.supabase.co';
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 
 export default function ChatPage() {
 
     const [mensagem, setMensagem] = React.useState('');
     const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
 
+    React.useEffect(() => {
+        supabaseClient
+            .from('mensagens')
+            .select('*')
+            .order('id', {ascending:false})
+            .then(({ data }) => {
+                setListaDeMensagens(data);
+            });
+
+    }, []);
+
     function handleNovaMensagem(novaMensagem) {
         const mensagem = {
-            id: listaDeMensagens.length + 1,
-            de: 'Evely Tereza',
+            de: 'evelyt',
             texto: novaMensagem,
         };
-        setListaDeMensagens([
-            mensagem,
-            ...listaDeMensagens,
-        ]);
-        setMensagem('');
-    }
+        supabaseClient
+            .from('mensagens')
+            .insert([
+                mensagem
+            ])
+            .then(({ data }) => {
+                setListaDeMensagens([
+                    data[0],
+                    ...listaDeMensagens,
+                ]);
+            });
 
-    function handleDeleteMensagem(mensagem, deleteMensagem) {
-        const index = mensagem.findIndex((m) => m.id === deleteMensagem.id);
-        mensagem[index].text = 'mensagem deletada';
-        mensagem[index].italic = true;
-        setListaDeMensagens([...mensagem]);
+        setMensagem('');
     }
 
     return (
@@ -65,7 +83,7 @@ export default function ChatPage() {
                     }}
                 >
 
-                    <MessageList mensagens={listaDeMensagens} handleDeleteMensagem={handleDeleteMensagem}/>
+                    <MessageList mensagens={listaDeMensagens} />
 
                     <Box
                         as="form"
@@ -105,7 +123,7 @@ export default function ChatPage() {
                             variant='tertiary'
                             colorVariant='neutral'
                             label='Enviar'
-                            disabled={mensagem === '' }
+                            disabled={mensagem === ''}
                             onClick={(event) => {
                                 event.preventDefault();
                                 handleNovaMensagem(mensagem);
@@ -177,17 +195,11 @@ function MessageList(props) {
                                     display: 'inline-block',
                                     marginRight: '8px',
                                 }}
-                                src={`https://github.com/evelyt.png`}
+                                src={`https://github.com/${mensagem.de}.png`}
                             />
                             <Text tag="strong">
                                 {mensagem.de}
                             </Text>
-                            <Button
-                                onClick={()=> {props.handleDeleteMensagem(props.mensagem, mensagem)}}
-                                variant='tertiary'
-                                colorVariant='negative'
-                                label='Deletar'
-                            />
                             <Text
                                 styleSheet={{
                                     fontSize: '10px',
