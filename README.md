@@ -43,6 +43,7 @@ O mesmo foi inspirado no chat do Discord e desenvolvido com React.js e Next.js.
 
 ## :hammer_and_wrench: Funcionalidades
 - [x] Tela de login (página inicial)
+- [x] Chat
 
 <p align="right"><a href="#top"><img src="https://img.shields.io/static/v1?label&message=voltar+ao+topo&color=c9161c&logo" alt="voltar ao topo" /></a></p>
 
