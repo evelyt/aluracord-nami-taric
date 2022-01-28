@@ -4,8 +4,29 @@ import appConfig from '../config.json';
 
 export default function ChatPage() {
 
-    const  {mensagem, setMensagem} = React.useState('');
-    
+    const [mensagem, setMensagem] = React.useState('');
+    const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
+
+    function handleNovaMensagem(novaMensagem) {
+        const mensagem = {
+            id: listaDeMensagens.length + 1,
+            de: 'Evely Tereza',
+            texto: novaMensagem,
+        };
+        setListaDeMensagens([
+            mensagem,
+            ...listaDeMensagens,
+        ]);
+        setMensagem('');
+    }
+
+    function handleDeleteMensagem(mensagem, deleteMensagem) {
+        const index = mensagem.findIndex((m) => m.id === deleteMensagem.id);
+        mensagem[index].text = 'mensagem deletada';
+        mensagem[index].italic = true;
+        setListaDeMensagens([...mensagem]);
+    }
+
     return (
         <Box
             styleSheet={{
@@ -19,7 +40,7 @@ export default function ChatPage() {
             <Box
                 styleSheet={{
                     display: 'flex',
-                    flexDirection: 'column', 
+                    flexDirection: 'column',
                     flex: 1,
                     boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
                     borderRadius: '5px',
@@ -43,8 +64,10 @@ export default function ChatPage() {
                         padding: '16px',
                     }}
                 >
-                     {/*<MessageList mensagens={[]} />*/}
-                     <Box
+
+                    <MessageList mensagens={listaDeMensagens} handleDeleteMensagem={handleDeleteMensagem}/>
+
+                    <Box
                         as="form"
                         styleSheet={{
                             display: 'flex',
@@ -53,11 +76,17 @@ export default function ChatPage() {
                     >
                         <TextField
                             value={mensagem}
-                            onChange={ function(event){
-                                console.log("mensagem", event.target.value);
+                            onChange={function (event) {
                                 const valor = event.target.value;
                                 setMensagem(valor);
                             }}
+                            onKeyPress={(event) => {
+                                if (event.key === 'Enter') {
+                                    event.preventDefault();
+                                    handleNovaMensagem(mensagem);
+                                }
+                            }}
+
                             placeholder="Insira sua mensagem aqui..."
                             type="textarea"
                             styleSheet={{
@@ -69,6 +98,17 @@ export default function ChatPage() {
                                 backgroundColor: appConfig.theme.colors.neutrals[800],
                                 marginRight: '12px',
                                 color: appConfig.theme.colors.neutrals[200],
+
+                            }}
+                        />
+                        <Button
+                            variant='tertiary'
+                            colorVariant='neutral'
+                            label='Enviar'
+                            disabled={mensagem === '' }
+                            onClick={(event) => {
+                                event.preventDefault();
+                                handleNovaMensagem(mensagem);
                             }}
                         />
                     </Box>
@@ -96,12 +136,12 @@ function Header() {
     )
 }
 function MessageList(props) {
-    console.log('MessageList', props);
+    console.log('MessageList', props.listaDeMensagens);
     return (
         <Box
             tag="ul"
             styleSheet={{
-                overflow: 'scroll',
+                overflow: 'auto',
                 display: 'flex',
                 flexDirection: 'column-reverse',
                 flex: 1,
@@ -110,49 +150,59 @@ function MessageList(props) {
             }}
         >
 
-            <Text
-                key={mensagem.id}
-                tag="li"
-                styleSheet={{
-                    borderRadius: '5px',
-                    padding: '6px',
-                    marginBottom: '12px',
-                    hover: {
-                        backgroundColor: appConfig.theme.colors.neutrals[700],
-                    }
-                }}
-            >
-                <Box
-                    styleSheet={{
-                        marginBottom: '8px',
-                    }}
-                >
-                    <Image
-                        styleSheet={{
-                            width: '20px',
-                            height: '20px',
-                            borderRadius: '50%',
-                            display: 'inline-block',
-                            marginRight: '8px',
-                        }}
-                        src={`https://github.com/vanessametonini.png`}
-                    />
-                    <Text tag="strong">
-                        {mensagem.de}
-                    </Text>
+            {props.mensagens.map((mensagem) => {
+                return (
                     <Text
+                        key={mensagem.id}
+                        tag="li"
                         styleSheet={{
-                            fontSize: '10px',
-                            marginLeft: '8px',
-                            color: appConfig.theme.colors.neutrals[300],
+                            borderRadius: '5px',
+                            padding: '6px',
+                            marginBottom: '12px',
+                            hover: {
+                                backgroundColor: appConfig.theme.colors.neutrals[700],
+                            }
                         }}
-                        tag="span"
                     >
-                        {(new Date().toLocaleDateString())}
+                        <Box
+                            styleSheet={{
+                                marginBottom: '8px',
+                            }}
+                        >
+                            <Image
+                                styleSheet={{
+                                    width: '20px',
+                                    height: '20px',
+                                    borderRadius: '50%',
+                                    display: 'inline-block',
+                                    marginRight: '8px',
+                                }}
+                                src={`https://github.com/evelyt.png`}
+                            />
+                            <Text tag="strong">
+                                {mensagem.de}
+                            </Text>
+                            <Button
+                                onClick={()=> {props.handleDeleteMensagem(props.mensagem, mensagem)}}
+                                variant='tertiary'
+                                colorVariant='negative'
+                                label='Deletar'
+                            />
+                            <Text
+                                styleSheet={{
+                                    fontSize: '10px',
+                                    marginLeft: '8px',
+                                    color: appConfig.theme.colors.neutrals[300],
+                                }}
+                                tag="span"
+                            >
+                                {(new Date().toLocaleDateString())}
+                            </Text>
+                        </Box>
+                        {mensagem.texto}
                     </Text>
-                </Box>
-                {mensagem.texto}
-            </Text>
+                );
+            })}
         </Box>
     )
 }
