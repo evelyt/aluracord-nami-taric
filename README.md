@@ -36,7 +36,7 @@ Projeto desenvolvido durante a <a href="https://www.alura.com.br/imersao-react">
 O mesmo foi inspirado no chat do Discord e desenvolvido com React.js e Next.js.
 
 <div align="center">
-    <img src='https://cdn.discordapp.com/attachments/935178124742762578/935716854901657630/unknown.png' width="80%">
+    <img src='https://cdn.discordapp.com/attachments/935178124742762578/936742705290149888/unknown.png' width="80%">
 </div>
 
 <p align="right"><a href="#top"><img src="https://img.shields.io/static/v1?label&message=voltar+ao+topo&color=c9161c&logo" alt="voltar ao topo" /></a></p>
