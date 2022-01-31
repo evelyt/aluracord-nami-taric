@@ -13,7 +13,7 @@
     <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/evelyt/aluracord-nami-taric?color=%23F7DF1E&logo=javascript&style=plastic">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/evelyt/aluracord-nami-taric?color=181717&logoColor=181717&logo=github&style=plastic">
     <img alt="date created" src="https://badges.pufler.dev/created/evelyt/aluracord-nami-taric?style=plastic&color=F967BC">
-    <img src="https://img.shields.io/static/v1?label=🚧 status&message=em+desenvolvimento&color=FDD23F&style=plastic&logo=" alt="status: em desenvolvimento"/>
+    <img src="https://img.shields.io/static/v1?label=🚧 status&message=em+produção&color=FDD23F&style=plastic&logo=" alt="status: em produção"/>
 </div>
 
 # <h3>:link:<a href='https://aluracord-nami-taric.vercel.app/'> Acessar a demonstração (Vercel)</a></h3>
@@ -36,7 +36,7 @@ Projeto desenvolvido durante a <a href="https://www.alura.com.br/imersao-react">
 O mesmo foi inspirado no chat do Discord e desenvolvido com React.js e Next.js.
 
 <div align="center">
-    <img src='https://cdn.discordapp.com/attachments/935178124742762578/936742705290149888/unknown.png' width="80%">
+    <img src='https://cdn.discordapp.com/attachments/935178124742762578/937751099035779082/unknown.png' width="80%">
 </div>
 
 <p align="right"><a href="#top"><img src="https://img.shields.io/static/v1?label&message=voltar+ao+topo&color=c9161c&logo" alt="voltar ao topo" /></a></p>
