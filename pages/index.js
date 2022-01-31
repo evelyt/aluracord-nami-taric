@@ -2,7 +2,7 @@ import { Box, Button, Text, TextField, Image } from '@skynexui/components';
 import React from 'react';
 import { useRouter } from 'next/router';
 import appConfig from '../config.json';
-import { redirect } from 'next/dist/server/api-utils';
+
 
 function Title(propos) {
   const Tag = propos.tag || h1;
@@ -113,6 +113,7 @@ export default function HomePage() {
               maxWidth: '200px',
               padding: '16px',
               //backgroundColor: appConfig.theme.colors.neutrals[800],
+              //border: '1px solid',
               //borderColor: appConfig.theme.colors.neutrals[999],
               borderRadius: '10px',
               flex: 1,
@@ -121,7 +122,8 @@ export default function HomePage() {
           >
             <Image
               styleSheet={{
-                border: '1px solid',
+                border: '2px ridge',
+                borderColor: appConfig.theme.colors.primary[700],
                 borderRadius: '50%',
                 marginBottom: '16px',
               }}
