@@ -39,6 +39,8 @@ O mesmo foi inspirado no chat do Discord e desenvolvido com React.js e Next.js.
     <img src='https://cdn.discordapp.com/attachments/935178124742762578/937751099035779082/unknown.png' width="80%">
 </div>
 
+<p style="font-size: 12px">Não adequado para telas pequenas!</p>
+
 <p align="right"><a href="#top"><img src="https://img.shields.io/static/v1?label&message=voltar+ao+topo&color=c9161c&logo" alt="voltar ao topo" /></a></p>
 
 ## :hammer_and_wrench: Funcionalidades
