@@ -11,7 +11,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5v
 const SUPABASE_URL = 'https://blzxyaihxwobqwbqakus.supabase.co';
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-function escutaMensagensEmTempoReal(adicionaMensagem){
+function escutaMensagensEmTempoReal(adicionaMensagem) {
     return supabaseClient
         .from('mensagens')
         .on('INSERT', (respostaLive) => {
@@ -36,14 +36,14 @@ export default function ChatPage() {
                 setListaDeMensagens(data);
             });
 
-            escutaMensagensEmTempoReal((novaMensagem) => {
-                setListaDeMensagens((valorAtualDaLista)=> {
-                    return[
-                        novaMensagem ,
-                        ...valorAtualDaLista,
-                    ]
-                })
-            });
+        escutaMensagensEmTempoReal((novaMensagem) => {
+            setListaDeMensagens((valorAtualDaLista) => {
+                return [
+                    novaMensagem,
+                    ...valorAtualDaLista,
+                ]
+            })
+        });
 
     }, []);
 
@@ -76,8 +76,11 @@ export default function ChatPage() {
         >
             <Box
                 styleSheet={{
-                    display: 'flex',
-                    flexDirection: 'column',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    flexDirection: {
+                        xs: 'column',
+                        sm: 'column',
+                    },
                     flex: 1,
                     boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
                     borderRadius: '5px',
@@ -138,8 +141,8 @@ export default function ChatPage() {
 
                             }}
                         />
-                        <ButtonSendSticker 
-                            onStickerClick = {(sticker) => {
+                        <ButtonSendSticker
+                            onStickerClick={(sticker) => {
                                 //console.log('[USANDO O COMPONENTE] salva sticker no banco');
                                 handleNovaMensagem(':sticker:' + sticker);
                             }}
@@ -239,7 +242,7 @@ function MessageList(props) {
                         {/*Condicional: {mensagem.texto.startsWith(':sticker:').toString()}*/}
                         {mensagem.texto.startsWith(':sticker:')
                             ? (
-                                <Image src={mensagem.texto.replace(':sticker:', '')}/>
+                                <Image src={mensagem.texto.replace(':sticker:', '')} />
 
                             )
                             : (
