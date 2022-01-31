@@ -6,10 +6,19 @@ import appConfig from '../config.json';
 import { ButtonSendSticker } from '../src/components/ButtonSendStickers';
 
 
+
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzM5Nzk1MywiZXhwIjoxOTU4OTczOTUzfQ.jbie9zokow3JZdomJYznzvIAk80cbCFKJ-kAslDHZIA';
 const SUPABASE_URL = 'https://blzxyaihxwobqwbqakus.supabase.co';
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+function escutaMensagensEmTempoReal(adicionaMensagem){
+    return supabaseClient
+        .from('mensagens')
+        .on('INSERT', (respostaLive) => {
+            adicionaMensagem(respostaLive.new)
+        })
+        .subscribe();
+}
 
 export default function ChatPage() {
 
@@ -22,9 +31,18 @@ export default function ChatPage() {
         supabaseClient
             .from('mensagens')
             .select('*')
-            .order('id', {ascending:false})
+            .order('id', { ascending: false })
             .then(({ data }) => {
                 setListaDeMensagens(data);
+            });
+
+            escutaMensagensEmTempoReal((novaMensagem) => {
+                setListaDeMensagens((valorAtualDaLista)=> {
+                    return[
+                        novaMensagem ,
+                        ...valorAtualDaLista,
+                    ]
+                })
             });
 
     }, []);
@@ -40,10 +58,7 @@ export default function ChatPage() {
                 mensagem
             ])
             .then(({ data }) => {
-                setListaDeMensagens([
-                    data[0],
-                    ...listaDeMensagens,
-                ]);
+
             });
 
         setMensagem('');
@@ -123,7 +138,12 @@ export default function ChatPage() {
 
                             }}
                         />
-                        <ButtonSendSticker/>
+                        <ButtonSendSticker 
+                            onStickerClick = {(sticker) => {
+                                //console.log('[USANDO O COMPONENTE] salva sticker no banco');
+                                handleNovaMensagem(':sticker:' + sticker);
+                            }}
+                        />
                         <Button
                             variant='tertiary'
                             colorVariant='neutral'
@@ -134,7 +154,7 @@ export default function ChatPage() {
                                 handleNovaMensagem(mensagem);
                             }}
                         />
-                        
+
                     </Box>
                 </Box>
             </Box>
@@ -173,7 +193,6 @@ function MessageList(props) {
                 marginBottom: '16px',
             }}
         >
-
             {props.mensagens.map((mensagem) => {
                 return (
                     <Text
@@ -217,7 +236,16 @@ function MessageList(props) {
                                 {(new Date().toLocaleDateString())}
                             </Text>
                         </Box>
-                        {mensagem.texto}
+                        {/*Condicional: {mensagem.texto.startsWith(':sticker:').toString()}*/}
+                        {mensagem.texto.startsWith(':sticker:')
+                            ? (
+                                <Image src={mensagem.texto.replace(':sticker:', '')}/>
+
+                            )
+                            : (
+                                mensagem.texto
+
+                            )}
                     </Text>
                 );
             })}

@@ -1,3 +1,4 @@
+import './style.css';
 function GlobalStyle() {
     return (
       <style global jsx>{`
