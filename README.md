@@ -13,7 +13,6 @@
     <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/evelyt/aluracord-nami-taric?color=%23F7DF1E&logo=javascript&style=plastic">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/evelyt/aluracord-nami-taric?color=181717&logoColor=181717&logo=github&style=plastic">
     <img alt="date created" src="https://badges.pufler.dev/created/evelyt/aluracord-nami-taric?style=plastic&color=F967BC">
-    <img src="https://img.shields.io/static/v1?label=🚧 status&message=em+produção&color=FDD23F&style=plastic&logo=" alt="status: em produção"/>
 </div>
 
 # <h3>:link:<a href='https://aluracord-nami-taric.vercel.app/'> Acessar a demonstração (Vercel)</a></h3>
